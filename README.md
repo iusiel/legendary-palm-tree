@@ -7,3 +7,4 @@ Random helpful things for me in web development.
 - [JS Unit Test - Vitest](https://vitest.dev/)
 - [SwiperJS - Carousel](https://swiperjs.com/)
 - [Tailwind CSS](https://tailwindcss.com/)
+- [Headless UI](https://headlessui.com/)
