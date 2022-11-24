@@ -8,3 +8,4 @@ Random helpful things for me in web development.
 - [SwiperJS - Carousel](https://swiperjs.com/)
 - [Tailwind CSS](https://tailwindcss.com/)
 - [Headless UI](https://headlessui.com/)
+- [Laravel GraphQL](https://github.com/rebing/graphql-laravel)
