@@ -1,9 +1,25 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello HomepageController!{% endblock %}
+{% block title %}Listings{% endblock %}
 
 {% block body %}
-<div class="example-wrapper">
-    <h1 class="tw-text-center tw-text-xl tw-mt-8">Hello {{ controller_name }}!</h1>
+<div class="tw-container tw-mx-auto tw-my-8 tw-mx-6">
+    <h1 class="tw-text-center tw-text-4xl tw-font-black">Listings Page</h1>
+
+    <p class="tw-my-8">
+        This repository contains all my testing for various web technologies that I encounter. I am using Symfony, Vue.JS and TailwindCSS as the general backbone for this page.
+    </p>
+    <ul class="tw-grid tw-gap-5">
+        {% for listing in listings %}
+        <li>
+            <h2 class="tw-font-bold tw-text-2xl tw-pb-4">{{ listing['title'] }}</h2>
+            <p>{{ listing['description'] }}</p>
+            <div class="tw-mt-4">
+                <a target="_blank" rel="noopener" href="{{ listing['websiteLink'] }}">Go to website of {{ listing['title'] }}</a> | 
+                <a href="{{ listing['testPageLink'] }}">Go to my test page</a>
+            </div>
+        </li>
+        {% endfor %}
+    </ul>
 </div>
 {% endblock %}
