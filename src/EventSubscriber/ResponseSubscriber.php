@@ -67,11 +67,20 @@ class ResponseSubscriber implements EventSubscriberInterface
         ];
         $csp[] = "script-src " . implode(" ", $scriptSrc);
 
-        $styleSrc = ["'self'", "'unsafe-inline'", "127.0.0.1:5173", "*:5173"];
+        $styleSrc = [
+            "'self'",
+            "'unsafe-inline'",
+            "127.0.0.1:5173",
+            "*:5173",
+            "https://fonts.googleapis.com",
+        ];
         $csp[] = "style-src " . implode(" ", $styleSrc);
 
         $connectSrc = ["'self'", "ws:"];
         $csp[] = "connect-src " . implode(" ", $connectSrc);
+
+        $fontSrc = ["'self'", "https://fonts.gstatic.com"];
+        $csp[] = "font-src " . implode(" ", $fontSrc);
 
         return implode("; ", $csp);
     }
