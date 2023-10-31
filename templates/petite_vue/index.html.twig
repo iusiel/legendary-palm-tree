@@ -1,0 +1,40 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Petite Vue{% endblock %}
+
+{% block body %}
+
+<script nonce="{{ nonce.generate }}" type="module">
+  import { createApp } from 'https://unpkg.com/petite-vue?module'
+
+  createApp({
+    // exposed to all expressions
+    count: 0,
+    $delimiters: ['{', '}'],
+
+    // getters
+    get plusOne() {
+      return this.count + 1
+    },
+    // methods
+    increment() {
+      this.count++
+    }
+
+  }).mount('#app')
+</script>
+
+<div class="tw-container tw-mx-auto tw-my-8 tw-mx-6">
+    <h1 class="tw-text-center tw-text-4xl tw-text-black tw-font-black">Petite Vue</h1><!-- anywhere on the page -->
+
+    <p class="tw-mt-4">I have managed to make Petite vue work inside a twig template by changing the delimiters used by Petite Vue. Below is a simple implementation. The count variable is declared when instatiating the app. The button increments the count by 1.</p>
+
+    <p class="tw-mt-4">As per documentation, it looks like you need to use unsafe-eval when implementing CSP. Otherwise, the app will not work properly. The developers have no intention of providing a CSP build for this one so in case of strict CSP requirements, just use Vue and pre-compile the templates.</p>
+    
+    <div class="tw-mt-8 tw-border-t tw-border-black tw-border-solid tw-pt-8" id="app">
+        { count }
+        <button @click="increment">Increment count</button>
+    </div>
+
+</div>
+{% endblock %}

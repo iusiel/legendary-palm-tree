@@ -17,7 +17,7 @@ class HomepageController extends AbstractController
                 "description" =>
                     "From what I understand, you can use petite vue if you do not want to turn your website into a full blown Vue application and just use some Vue features into your website.",
                 "websiteLink" => "https://github.com/vuejs/petite-vue",
-                "testPageLink" => "#",
+                "testPageLink" => $this->generateUrl("app_petite_vue"),
             ],
         ];
 

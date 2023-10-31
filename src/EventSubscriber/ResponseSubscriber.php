@@ -5,13 +5,16 @@ namespace App\EventSubscriber;
 use App\Services\Nonce;
 use Symfony\Component\EventDispatcher\EventSubscriberInterface;
 use Symfony\Component\HttpKernel\Event\ResponseEvent;
-
+use Symfony\Component\Routing\Generator\UrlGeneratorInterface;
 class ResponseSubscriber implements EventSubscriberInterface
 {
     private $nonce;
+    private $event;
 
-    public function __construct(Nonce $nonce)
-    {
+    public function __construct(
+        Nonce $nonce,
+        private UrlGeneratorInterface $router
+    ) {
         $this->nonce = $nonce;
     }
 
@@ -22,6 +25,8 @@ class ResponseSubscriber implements EventSubscriberInterface
 
     public function onKernelResponse(ResponseEvent $event): void
     {
+        $this->event = $event;
+
         if (!$event->isMainRequest()) {
             return;
         }
@@ -65,11 +70,17 @@ class ResponseSubscriber implements EventSubscriberInterface
             "'strict-dynamic'",
             "'nonce-" . $this->nonce->generate() . "'",
         ];
+        if (
+            $this->event->getRequest()->getRequestUri() ===
+            $this->router->generate("app_petite_vue")
+        ) {
+            $scriptSrc[] = "'unsafe-eval'"; //add unsafe-eval for petite vue page
+        }
         $csp[] = "script-src " . implode(" ", $scriptSrc);
 
         $styleSrc = [
             "'self'",
-            "'unsafe-inline'",
+            // "'unsafe-inline'",
             "127.0.0.1:5173",
             "*:5173",
             "https://fonts.googleapis.com",
