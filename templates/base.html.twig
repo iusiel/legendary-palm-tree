@@ -11,8 +11,20 @@
     {% endblock %}
 </head>
 <body>
+    <header class="tw-border-b tw-border-black tw-border-dashed tw-py-8 tw-text-center">
+        <a href="{{ path('app_homepage')}}">Legendary Palm Tree</a>
+
+        <p class="tw-mt-4">
+            This repository contains all my testing for various web technologies that I encounter. I am using Symfony, Vue.JS and TailwindCSS as the general backbone for this site.
+        </p>
+    </header>
     {% block body %}{% endblock %}
 
+    <footer class="tw-border-t tw-border-black tw-border-dashed tw-py-8 tw-text-center">
+        <a href="{{ path('app_homepage')}}">Legendary Palm Tree</a>
+        <div>Copyright © {{ 'now' | date('Y') }} <a target="_blank" rel="noopener" href="https://iusiel.netlify.app">Iusiel</a></div>
+        
+    </footer>
 
     {% block javascripts %}
         {{ vite_entry_script_tags('theme')|replace({"<script": "<script nonce=\"" ~ nonce.generate ~ "\"" }) | raw }}

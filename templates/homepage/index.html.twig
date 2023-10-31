@@ -6,10 +6,7 @@
 <div class="tw-container tw-mx-auto tw-my-8 tw-mx-6">
     <h1 class="tw-text-center tw-text-4xl tw-font-black">Listings Page</h1>
 
-    <p class="tw-my-8">
-        This repository contains all my testing for various web technologies that I encounter. I am using Symfony, Vue.JS and TailwindCSS as the general backbone for this page.
-    </p>
-    <ul class="tw-grid tw-gap-5">
+    <ul class="tw-grid tw-gap-5 tw-mt-8">
         {% for listing in listings %}
         <li>
             <h2 class="tw-font-bold tw-text-2xl tw-pb-4">{{ listing['title'] }}</h2>
