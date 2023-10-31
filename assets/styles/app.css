@@ -7,3 +7,15 @@
 body {
     font-family: "Aleo", serif;
 }
+
+button {
+    border: 1px solid #000;
+    cursor: pointer;
+    transition: all ease 0.5s;
+    @apply tw-px-4 tw-py-2;
+
+    &:hover {
+        background: #000;
+        color: #fff;
+    }
+}
